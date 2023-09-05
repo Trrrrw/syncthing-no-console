@@ -24,7 +24,10 @@ jobs:
                 fileName: "syncthing-windows-amd64-.*.zip"
 
             - name: Unzip Syncthing
-              run: unzip ./.*.zip -d ./dist
+              run: |
+                for file in ./*.zip; do
+                    unzip "$file" -d ./dist
+                done
 
             - name: Inno Setup Action
               uses: Minionguyjpro/Inno-Setup-Action@v1.1.0
