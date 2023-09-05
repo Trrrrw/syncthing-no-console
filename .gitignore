@@ -4,5 +4,4 @@ dist
 .gitignore
 icon.ico
 pystray-test.spec
-setup.iss
 SyncthingSetup.exe
