@@ -1,0 +1,36 @@
+name: Build Installer
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Package Python Application
+              uses: JackMcKew/pyinstaller-action-windows@main
+              with:
+                path: /
+
+            - name: Download Syncthing
+              uses: robinraju/release-downloader@v1.8
+              with: 
+                repository: "syncthing/syncthing"
+                latest: true
+                fileName: "syncthing-windows-amd64-.*.zip"
+
+            - name: Unzip Syncthing
+              run: unzip syncthing-windows-amd64-.*.zip -d /dist
+
+            - name: Inno Setup Action
+              uses: Minionguyjpro/Inno-Setup-Action@v1.1.0
+              with:
+                path: /setup.iss
+
+                
+          
+            

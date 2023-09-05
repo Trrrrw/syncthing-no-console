@@ -3,5 +3,4 @@ build
 dist
 .gitignore
 icon.ico
-pystray-test.spec
 SyncthingSetup.exe
