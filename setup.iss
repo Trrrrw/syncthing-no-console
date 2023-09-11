@@ -3,7 +3,7 @@
 
 #define MyAppName "Syncthing"
 #define MyAppId "Trrrrw.Syncthing"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "https://github.com/Trrrrw"
 #define MyAppURL "https://github.com/Trrrrw/syncthing_no_console"
 
