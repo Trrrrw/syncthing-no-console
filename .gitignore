@@ -1,6 +1,9 @@
 .idea
 build
 dist
+.vscode
 .gitignore
 icon.ico
 SyncthingSetup.exe
+build.bat
+change_log.md

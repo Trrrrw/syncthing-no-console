@@ -26,7 +26,7 @@ jobs:
             - name: Unzip Syncthing
               run: |
                 for file in ./*.zip; do
-                    unzip "$file" ./dist
+                    unzip "$file" -d .
                 done
 
             - name: Inno Setup Action

@@ -5,7 +5,7 @@
 #define MyAppId "Trrrrw.Syncthing"
 #define MyAppVersion "1.0"
 #define MyAppPublisher "https://github.com/Trrrrw"
-#define MyAppURL "https://github.com/Trrrrw/syncthing-no-console"
+#define MyAppURL "https://github.com/Trrrrw/syncthing_no_console"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -21,6 +21,10 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
+
+ShowLanguageDialog=yes
+LanguageDetectionMethod=uilanguage
+
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=.
@@ -31,14 +35,13 @@ SolidCompression=yes
 WizardStyle=modern
 
 [Languages]
-Name: "chs"; MessagesFile: "compiler:Default.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 
 [Files]
 Source: "./dist/*"; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
-; [Dirs]
-; Name: "{group}\{#MyAppName}"; Flags: uninsalwaysuninstall
 
 [Icons]
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\syncthing_no_console.exe"; WorkingDir: "{app}"
@@ -46,5 +49,8 @@ Name: "{group}\{cm:ProgramOnTheWeb,Syncthing}"; Filename: "http://127.0.0.1:8384
 Name: "{group}\{#MyAppName}"; Filename: "{app}\syncthing_no_console.exe"; WorkingDir: "{app}"
 Name: "{group}\{cm:UninstallProgram,Syncthing}"; Filename: "{uninstallexe}"
 
-[Run]
-Filename: "{app}\{#MyAppName}.exe"; Flags: nowait postinstall skipifsilent; Description: "Start MyApp on Windows startup"; Parameters: "-startup"
+; [Run]
+; Filename: "{app}\{#MyAppName}.exe"; Flags: nowait postinstall skipifsilent; Description: "Start MyApp on Windows startup"; Parameters: "-startup"
+
+[Registry]
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "testrun"; ValueData: "{app}\syncthing_no_console.exe"

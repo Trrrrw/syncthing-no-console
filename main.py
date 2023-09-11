@@ -2,20 +2,33 @@ from pystray import MenuItem, Icon
 from psutil import process_iter
 from PIL import Image
 
-from webbrowser import open
-from os import path
+import webbrowser
+import os
 from threading import Thread
 from subprocess import Popen, CREATE_NEW_CONSOLE
 
 
 def terminate_process_by_name(process_name):
+    """
+    Terminates a process by its name.
+
+    Args:
+        process_name (str): The name of the process to terminate.
+
+    Returns:
+        None
+    """
     for proc in process_iter(['name']):
         if proc.info['name'] == process_name:
             proc.terminate()
 
 
 def open_web():
-    open('http://127.0.0.1:8384/')
+    webbrowser.open('http://127.0.0.1:8384/')
+
+
+def about():
+    webbrowser.open('https://github.com/Trrrrw/syncthing_no_console')
 
 
 def on_quit(app, item):
@@ -30,9 +43,10 @@ def start_syncthing():
     syncthing_process.wait()
 
 
-image = Image.open(f'{path.dirname(__file__)}/icon.png')
+image = Image.open(f'{os.path.dirname(__file__)}/icon.png')
 menu = (
     MenuItem('打开Web界面', open_web),
+    MenuItem('关于', about),
     MenuItem('退出', on_quit),
 )
 app = Icon('app_name', image, 'Syncthing', menu)
