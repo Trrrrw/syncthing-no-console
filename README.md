@@ -16,5 +16,5 @@ Download SyncthingSetup.exe from release page and install it.
 
 
 
-[1]: https://cdn.staticaly.com/gh/syncthing/syncthing@main/assets/logo-text-128.png
+[1]: https://cdn.jsdelivr.net/gh/syncthing/syncthing@main/assets/logo-text-128.png
 [2]: https://syncthing.net/
